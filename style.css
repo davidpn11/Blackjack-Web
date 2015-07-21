@@ -1,0 +1,62 @@
+
+html,body{
+	    height:100%;      
+       
+
+}
+
+#wrapper {
+        height:100%;
+        background: green;
+        z-index: 100;
+        overflow: hidden;
+  	  	position: relative;
+    	width: 100%;
+
+    }
+
+.head{
+	border: 3px solid black;
+	/*border-radius: 5px;	*/
+	background: black;
+}
+
+
+.head > h1{
+	text-align: center;	
+	font-size: 60px;
+	color: #770000;	
+
+}
+
+.hidden-class{
+	visibility: hidden;
+}
+.show-class{
+	visibility: visible;
+}
+
+.stats{
+	border-right: 2px solid black;
+	height: 100%;
+	
+}
+
+
+#game-begin{
+
+	display: block;
+	z-index: 105;
+	margin-left:34%; 
+	margin-top: 20%;
+	position: absolute;
+	padding: 20px 10px 10px 10px;
+	width: 30%;
+	height: 30%;
+	background: white;
+	border: 3px solid black;
+	border-radius: 5px;
+
+	
+	
+}
