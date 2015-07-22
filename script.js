@@ -51,6 +51,31 @@ function startBaralho(){
 		}
 	}
 }
+
+function setCarta(nipe,valor,posicao){
+
+
+	var c = document.getElementsByClassName("carta")[posicao];
+
+	c.getElementsByClassName("carta-tipo")[0].innerHTML = valor;
+	var cartaImagem = c.getElementsByClassName("carta-imagem")[0];
+
+
+	if(nipe == 'copa'){
+		cartaImagem.src = "hearts.png";
+
+	}else if(nipe == 'paus'){
+		cartaImagem.src = "hearts.png";
+
+	}else if(nipe == 'ouros'){
+		cartaImagem.src = "hearts.png";
+
+	}else if(nipe == 'espadas'){
+		cartaImagem.src = "hearts.png";
+	}
+}
+
+setCarta('espadas', 'K',0);
 	
 
 

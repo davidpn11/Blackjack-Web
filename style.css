@@ -45,7 +45,7 @@ html,body{
 
 #game-begin{
 
-	display: block;
+	display: none;
 	z-index: 105;
 	margin-left:34%; 
 	margin-top: 20%;
@@ -56,7 +56,28 @@ html,body{
 	background: white;
 	border: 3px solid black;
 	border-radius: 5px;
-
-	
-	
 }
+
+.carta{
+	left: 30%;
+	position: absolute;
+	height: 210px;
+	width: 130px;
+	background: white;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+
+.carta > h4{
+	font-size: 40px;
+	padding-left: 10px;
+}
+
+.carta > img{
+	
+	margin-left: 15%;
+	width: 80px;
+	height: 80px;
+}
+
+
