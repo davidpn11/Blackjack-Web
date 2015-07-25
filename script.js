@@ -3,14 +3,15 @@
 var playerName;
 var botaoInicia = document.querySelector('#iniciar-jogo');
 var janelaInicial = document.getElementById('game-begin');
-
+var fundo = document.getElementById('fundo');
 
 botaoInicia.addEventListener('click', function (event) {
 	
 	startBaralho();
     playerName = document.getElementById('player-name').value;        
     janelaInicial.style.visibility = "hidden";
-
+    fundo.style.visibility = "hidden";
+    
     var elements = document.getElementsByClassName('hidden-class');
 	for (var i in elements) {
   		if (elements.hasOwnProperty(i)) {
@@ -18,6 +19,8 @@ botaoInicia.addEventListener('click', function (event) {
   		}  	
 	}
 });
+
+x.setCarta();
 
 
 var nipe = ['copa','paus','ouros','espadas'];
@@ -62,20 +65,20 @@ function setCarta(nipe,valor,posicao){
 
 
 	if(nipe == 'copa'){
-		cartaImagem.src = "hearts.png";
+		cartaImagem.src = "images/hearts.png";
 
 	}else if(nipe == 'paus'){
-		cartaImagem.src = "hearts.png";
+		cartaImagem.src = "images/clubs.png";
 
 	}else if(nipe == 'ouros'){
-		cartaImagem.src = "hearts.png";
+		cartaImagem.src = "images/diamonds.png";
 
 	}else if(nipe == 'espadas'){
-		cartaImagem.src = "hearts.png";
+		cartaImagem.src = "images/espadas.png";
 	}
 }
 
-setCarta('espadas', 'K',0);
+setCarta('paus', 'K',0);
 	
 
 
