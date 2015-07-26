@@ -1,10 +1,13 @@
 
 
 var playerName;
-var botaoInicia = document.querySelector('#iniciar-jogo');
+//var botaoInicia = document.querySelector('#iniciar-jogo');
 var janelaInicial = document.getElementById('game-begin');
 var fundo = document.getElementById('fundo');
-
+var fazerAposta = document.getElementById('fazerAposta');
+var aposta = document.getElementById('aposta');
+var continuaAposta = document.getElementById('continua-aposta');
+/*
 botaoInicia.addEventListener('click', function (event) {
 	
 	startBaralho();
@@ -18,9 +21,19 @@ botaoInicia.addEventListener('click', function (event) {
     		elements[i].className = 'show-class';
   		}  	
 	}
+
+});*/
+
+var valorAposta;
+
+fazerAposta.addEventListener('click',function(event){
+    valorAposta = document.getElementById('valorAposta').value;
+    aposta.style.display = 'none';
+    continuaAposta.style.display = 'inherit';
+    
 });
 
-x.setCarta();
+
 
 
 var nipe = ['copa','paus','ouros','espadas'];
@@ -35,6 +48,8 @@ function carta(nipe, tipo, valor){
 
 var baralho = [];
 var count=0;
+
+
 
 
 function startBaralho(){

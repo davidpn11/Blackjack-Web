@@ -36,7 +36,7 @@ html,body{
 	visibility: visible;
 }
 
-.stats{
+.log-jogo{
 	border-right: 2px solid black;
 	height: 100%;
 	
@@ -82,15 +82,9 @@ html,body{
 
 .game{
     display: block;
-    height: 100%;
-    border-right: 1px solid black;
+    height: 100%;      
 }
 
-
-.carta-teste{
-    height: 100%;
-    wid
-}
 
 #cartas-player{
     position: absolute;
@@ -116,8 +110,45 @@ html,body{
     display: inline;
 }
 
+#aposta{
+    
+    position: absolute;
+    /*border: 1px solid red;*/
+    width: 80%;
+    height: 22%;
 
+}
 
+#aposta > div > *{
+    margin-top:10px;
+}
+
+#continua-aposta{
+    display: none;
+    position: absolute;
+    /*border: 1px solid blue;*/
+    width: 80%;
+    height: 22%;
+
+}
+
+#continua-aposta > button{
+
+    width: 100%;
+    margin-top:15px;
+
+}
+#stats{
+	display: none;
+/*	border: 1px solid purple;*/
+	text-align: center;
+	margin-top: 70%;
+}
+
+#final-result{
+	display: none;
+	/*border: 1px solid orange;*/
+}
 
 .carta > h4{
 	font-size: 40px;

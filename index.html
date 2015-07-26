@@ -2,13 +2,14 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+	<link rel="shortcut icon" href="images/spades.png" />
 	<title>Blackjack Game</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link href="bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet">	
 </head>
 
 <body>
-<!-------ATIVAR QUANDO ESTIVER PRONTO
+<!-- ATIVAR QUANDO ESTIVER PRONTO
     <div id="fundo"></div>
     
     
@@ -26,12 +27,44 @@
 		<h1>Blackjack Game</h1>
 	</div>
 
-	<div class="stats col-sm-3">
+	<div class="log-jogo col-sm-3">
 		<h1>David</h1>
+        
+        <h3>Saldo</h3>
+       
+        <div id="aposta" class="container">
+            <div class="form-group">
+            <label for="usr">Aposta:</label>
+           <select class="form-control" id="valorAposta">
+                <option value="100">$100</option>
+                <option value="150">$150</option>
+                <option value="200">$200</option>
+                <option value="250">$250</option>
+                <option value="300">$300</option>
+            </select>
+            <button id="fazerAposta" type="button" class="btn btn-default">Fazer Aposta</button>
+            </div>
+        </div>
+        <div id="continua-aposta">
+            <button type="button" class="btn btn-primary">Hit</button><br>
+            <button type="button" class="btn btn-warning">Stay</button>
+        
+        </div>
+        <div id="stats">
+	        <h4 id="player-resultado"><strong>Jogador:</strong>10 + 8 = 18</h4>
+	        <h4 id="Cpomp-resultado"><strong>computador:</strong>10 + 8 = 18</h4>
+	        
+	        <div id="final-result">
+		        <h2 id="result-text">Voce Ganhou!</h2>
+		       	<button type="button" class="btn btn-default">Continuar</button>	 	
+	        </div>
+	        
+        </div>
+        
 	</div>
 
    
-	<div class="game col-sm-7">
+	<div class="game col-sm-9">
 	
         <div id="cartas-player">
        <h4>Jogador</h4>
@@ -47,6 +80,19 @@
 		  <h4 class="carta-tipo">9</h4>
 		  <img class="carta-imagem" src="images/diamonds.png">
 		</div>
+            <div class="carta">
+		  <h4 class="carta-tipo">9</h4>
+		  <img class="carta-imagem" src="images/diamonds.png">
+		</div>
+            <div class="carta">
+		  <h4 class="carta-tipo">9</h4>
+		  <img class="carta-imagem" src="images/diamonds.png">
+		</div>
+            <div class="carta">
+		  <h4 class="carta-tipo">9</h4>
+		  <img class="carta-imagem" src="images/diamonds.png">
+		</div>
+
     </div>
         
      <!--   <div id="carta-pc-1"class="carta">
@@ -80,9 +126,7 @@
         
 	</div>
    
-    <div class="valores col-sm-2">
-    <h2>Valores</h2>
-    </div>
+   
 
 	
 
