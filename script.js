@@ -1,38 +1,33 @@
 
 
 var playerName = document.getElementById("player-name");
-var saldoPlayer = document.getElementById("saldo-player");
 //var botaoInicia = document.querySelector('#iniciar-jogo');
 var janelaInicial = document.getElementById('game-begin');
 var fundo = document.getElementById('fundo');
-var fazerAposta = document.getElementById('fazerAposta');
-var aposta = document.getElementById('aposta');
+var apostaButton = document.getElementById('fazerAposta');
+//var apostaDIV = document.getElementById('aposta');
 var continuaAposta = document.getElementById('continua-aposta');
+var statsDiv = document.getElementById("stats");
 
-botaoInicia.addEventListener('click', function (event) {
-	
-	startBaralho();
-    playerName.innerHTML = "<strong>"+document.getElementById('getPlayer-name').value+"</strong>";        
-    setSaldo(1000);
-    janelaInicial.style.visibility = "hidden";
-    fundo.style.visibility = "hidden";
-    
+var hitButton = document.getElementById("hit-button");
+var stayButton = document.getElementById("stay-button");
+var finalResult = document.getElementById("final-result");
+var resultText = document.getElementById("result-text");
+var continueButton = document.getElementById("continue-button");
 
-});
+var valorAposta = 0;
+var playerResult = document.getElementById("player-resultado");
+var cartasPlayer = document.getElementById("cartas-player");
+var playerSoma = 0;
+var saldoPlayerDIV = document.getElementById("saldo-player");
+var saldoPlayer = 1000;
 
-var valorAposta;
+var compSoma = document.getElementById("comp-resultado");
+var cartasComp = document.getElementById("cartas-comp");
+var compResult = document.getElementById("comp-resultado");
+var compSoma = 0;
 
-fazerAposta.addEventListener('click',function(event){
-    valorAposta = document.getElementById('valorAposta').value;
-    aposta.style.display = 'none';
-    continuaAposta.style.display = 'inherit';
-    
-});
-
-
-
-
-var nipe = ['copa','paus','ouros','espadas'];
+var nipe = ['hearts','clubs','diamonds','spades'];
 var tipo = ['A','2','3','4','5','6','7','8','9','10','J','Q','K'];
 var baralho = [];
 var count=0;
@@ -43,6 +38,7 @@ function carta(nipe, tipo, valor){
 	this.tipo = tipo;
 	this.valor = valor;
 }
+
 
 function startBaralho(){
 	baralho = [];	
@@ -62,37 +58,164 @@ function startBaralho(){
 	}
 }
 
-function setCarta(nipe,valor,posicao){
+
+botaoInicia.addEventListener('click', function (event) {
+
+	var playerName = document.getElementById("player-name");
+	startBaralho();
+    playerName.innerHTML = "<strong>Player: </strong>"+document.getElementById('getPlayer-name').value;        
+    saldoPlayerDIV.innerHTML = "<strong>Saldo:</strong> "+ saldoPlayer;
+    janelaInicial.style.visibility = "hidden";
+    fundo.style.visibility = "hidden";
+    
+
+});
 
 
-	var c = document.getElementsByClassName("carta")[posicao];
 
-	c.getElementsByClassName("carta-tipo")[0].innerHTML = valor;
-	var cartaImagem = c.getElementsByClassName("carta-imagem")[0];
+apostaButton.addEventListener('click',function(event){
+
+    if(saldoPlayer > 0){
+    	valorAposta = document.getElementById('valorAposta').value;
+    	iniciaJogada(valorAposta);	
+    }else{
+    	alert("Dinheiro insuficiente");
+    }
+    
+
+    
+});
 
 
-	if(nipe == 'copa'){
-		cartaImagem.src = "images/hearts.png";
+function iniciaJogada (valorAposta) {
+	statsDiv.style.display = "inherit";	
+	var x1 = puxaCarta("player");
+	var x2 = puxaCarta("player");
+	
+	checkBlackjack(x1,x2);
+	aposta.style.display = 'none';
+    continuaAposta.style.display = 'inherit';
 
-	}else if(nipe == 'paus'){
-		cartaImagem.src = "images/clubs.png";
+}
+	
 
-	}else if(nipe == 'ouros'){
-		cartaImagem.src = "images/diamonds.png";
+function checkBlackjack(x1,x2){
 
-	}else if(nipe == 'espadas'){
-		cartaImagem.src = "images/espadas.png";
+	if(x1 =="A"){
+		if(x2 == "10" || x2 == "J" || x2 == "Q" || x2 == "K"){			
+			setSaldo(valorAposta,"blackjack");
+		}
+	}
+	else if(x2 =="A"){
+		if(x1 == "10" || x1 == "J" || x1 == "Q" || x1 == "K"){
+			setSaldo(valorAposta,"blackjack");
+		}
 	}
 }
 
-function setSaldo(valueSaldo){
-	saldoPlayer.innerHTML = "<strong>Saldo:</strong> "+ valueSaldo;
+
+
+function puxaCarta(jogador){
+	
+	var x = Math.floor(Math.random() * 52);
+	var cartaTemp = baralho[x];
+	//saldoPlayer.innerHTML = "nipe:"+cartaTemp.nipe+"<br>tipo"+cartaTemp.tipo+"<br>valor"+cartaTemp.valor;
+	
+	if(jogador == "player"){
+		//alert(cartasPlayer.innerHTML);	
+		var preCartas = cartasPlayer.innerHTML;
+
+		cartasPlayer.innerHTML = preCartas + '<div class="carta"><h4 class="carta-tipo">'+cartaTemp.tipo+'</h4><img class="carta-imagem" src="images/'+cartaTemp.nipe+'.png"></div>';			
+		
+		var preSoma = playerResult.innerHTML;
+		playerSoma = playerSoma + cartaTemp.valor;
+		playerResult.innerHTML = '<strong>Jogador:</strong>' +playerSoma;//preSoma + " + " + cartaTemp.valor +" = " + playerSoma;
+
+	}
+	else{
+		var preCartas = cartasComp.innerHTML;
+		cartasComp.innerHTML = preCartas + '<div class="carta"><h4 class="carta-tipo">'+cartaTemp.tipo+'</h4><img class="carta-imagem" src="images/'+cartaTemp.nipe+'.png"></div>';			
+
+		var preSoma = compSoma.innerHTML;
+		compSoma = compSoma + cartaTemp.valor;
+		compResult.innerHTML = '<strong>Jogador:</strong>' + compSoma;
+	}
+
+	return cartaTemp.tipo;
 }
 
-setCarta('paus', 'K',0);
+
+
+hitButton.addEventListener('click', function (event) {
+
+    	puxaCarta("player");    	
+    	if(playerSoma > 21){
+    		hitButton.disabled = true;
+    		stayButton.disabled = true;
+    		setSaldo(valorAposta,"perdeu");
+    		
+    	}
+    });
+
+
+stayButton.addEventListener('click', function (event) {
+	ComputerPlay();
+
+});	
+
+function ComputerPlay () {	
+	puxaCarta("comp");
+	puxaCarta("comp");
 	
+	while(compSoma < playerSoma){
+		puxaCarta("comp");
 
+		if(compSoma >21){
+		
+			setSaldo(valorAposta,"ganhou");
+		}
+	}
+	if(compSoma >= playerSoma && compSoma <= 21){
+		
+		setSaldo(valorAposta,"perdeu");
+	}
+}
 
+function setSaldo(valorAposta,estado){
 
+	finalResult.style.display = "inherit";
+	
+	if(estado == "ganhou"){
+		saldoPlayer += valorAposta*2;
+		saldoPlayerDIV.innerHTML = "<strong>Saldo:</strong> "+ saldoPlayer;
+		resultText.innerHTML = "Você Ganhou";	
+	}else if(estado == "blackjack"){
+		saldoPlayer += valorAposta*2;
+		saldoPlayerDIV.innerHTML = "<strong>Saldo:</strong> "+ saldoPlayer;
+		resultText.innerHTML = "BLACKJACK";	
+	}
+	else{
+		saldoPlayer -= valorAposta;		
+		saldoPlayerDIV.innerHTML = "<strong>Saldo:</strong> "+ saldoPlayer;	
+		resultText.innerHTML = "Você Perdeu";
+	}
+
+	   continueButton.addEventListener('click', function (event) {
+	   		hitButton.disabled = false;
+    		stayButton.disabled = false;
+		   	finalResult.style.display = "none";
+		   	aposta.style.display = 'inherit';
+	    	continuaAposta.style.display = 'none';
+		   	playerSoma = 0;
+		   	compSoma = 0;
+		   	playerResult.innerHTML = '<strong>Jogador:</strong>';
+		   	compResult.innerHTML = '<strong>Computador:</strong>';
+		   	statsDiv.style.display = "none";
+		   	cartasPlayer.innerHTML = '<h4>Jogador</h4>';
+		   	cartasComp.innerHTML = '<h4>Computador</h4>';
+
+    });
+	
+}
 
 

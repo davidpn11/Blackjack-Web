@@ -6,6 +6,7 @@
 	<title>Blackjack Game</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link href="bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet">	
+	
 </head>
 
 <body>
@@ -14,26 +15,26 @@
     
     
 <div id="game-begin">
-<div class="form-group">
+	<div class="form-group">
     
-    <input type="name" class="form-control" id="getPlayer-name" value="David" placeholder="Nome">
-  </div>
+   		 <input type="name" class="form-control" id="getPlayer-name" value="David" placeholder="Nome">
+ 	 </div>
      <button id="botaoInicia" class="btn btn-default">Começar</button>
 </div>
 
 
-<div id="wrapper">
+
 	<div class="head">
 		<h1>Blackjack Game</h1>
 	</div>
 
-	<div class="log-jogo col-sm-3">
-		<h1 id="player-name"></h1>
+	<div id="log-jogo" class="col-sm-3">
+		<h1 id="player-name">Player:</h1>
         
         <h3 id="saldo-player"></h3>
        
         <div id="aposta" class="container">
-            <div class="form-group">
+            <div class="form-group row">
             <label for="usr">Aposta:</label>
            <select class="form-control" id="valorAposta">
                 <option value="100">$100</option>
@@ -46,17 +47,17 @@
             </div>
         </div>
         <div id="continua-aposta">
-            <button type="button" class="btn btn-primary">Hit</button><br>
-            <button type="button" class="btn btn-warning">Stay</button>
+            <button id="hit-button" type="button" class="btn btn-primary">Hit</button><br>
+            <button id="stay-button" type="button" class="btn btn-warning">Stay</button>
         
         </div>
-        <div id="stats">
-	        <h4 id="player-resultado"><strong>Jogador:</strong>10 + 8 = 18</h4>
-	        <h4 id="Cpomp-resultado"><strong>Computador:</strong>10 + 8 = 18</h4>
+        <div id="stats" class="row">
+	        <h4 id="player-resultado"><strong>Jogador:</strong></h4>
+	        <h4 id="comp-resultado"><strong>Computador:</strong></h4>
 	        
 	        <div id="final-result">
 		        <h2 id="result-text">Voce Ganhou!</h2>
-		       	<button type="button" class="btn btn-default">Continuar</button>	 	
+		       	<button id="continue-button" type="button" class="btn btn-default">Continuar</button>	 	
 	        </div>
 	        
         </div>
@@ -64,77 +65,39 @@
 	</div>
 
    
-	<div class="game col-sm-9">
+<div id="game" class=" col-sm-9">
 	
-        <div id="cartas-player">
-       <h4>Jogador</h4>
-        <div class="carta">
-		  <h4 class="carta-tipo">9</h4>
-		  <img class="carta-imagem" src="images/diamonds.png">
-		</div>
-        <div class="carta">
-		  <h4 class="carta-tipo">9</h4>
-		  <img class="carta-imagem" src="images/diamonds.png">
-		</div>
-        <div class="carta">
-		  <h4 class="carta-tipo">9</h4>
-		  <img class="carta-imagem" src="images/diamonds.png">
-		</div>
-            <div class="carta">
-		  <h4 class="carta-tipo">9</h4>
-		  <img class="carta-imagem" src="images/diamonds.png">
-		</div>
-            <div class="carta">
-		  <h4 class="carta-tipo">9</h4>
-		  <img class="carta-imagem" src="images/diamonds.png">
-		</div>
-            <div class="carta">
-		  <h4 class="carta-tipo">9</h4>
-		  <img class="carta-imagem" src="images/diamonds.png">
-		</div>
-
-    </div>
-        
-     <!--   <div id="carta-pc-1"class="carta">
-		  <h4 class="carta-tipo">9</h4>
-		  <img class="carta-imagem" src="images/diamonds.png">
-		</div>
-        <div id="carta-player-2" class="carta">
-		  <h4 class="carta-tipo">8</h4>
-		  <img class="carta-imagem" src="images/diamonds.png">
-		</div>
-        <div id="carta-pc-2"class="carta">
-		  <h4 class="carta-tipo">7</h4>
-		  <img class="carta-imagem" src="images/diamonds.png">
-		</div>
-        -->
-    <div id="cartas-comp">
-        <h4>Computador</h4>
-        <div class="carta">
-		  <h4 class="carta-tipo">9</h4>
-		  <img class="carta-imagem" src="images/diamonds.png">
-		</div>
-        <div class="carta">
-		  <h4 class="carta-tipo">9</h4>
-		  <img class="carta-imagem" src="images/diamonds.png">
-		</div>
-        <div class="carta">
-		  <h4 class="carta-tipo">9</h4>
-		  <img class="carta-imagem" src="images/diamonds.png">
-		</div>
-    </div>
-        
+	<div id="cartas-player" class="row">
+		<h4>Jogador</h4>
+	        
+	        <!--<div class="carta">
+			  <h4 class="carta-tipo">9</h4>
+			  <img class="carta-imagem" src="images/diamonds.png">
+			</div>-->
+	       
+		  
 	</div>
-   
-   
-
+		 
 	
-
+	<div id="cartas-comp" class="row">
+		
+		 <h4>Computador</h4>
+	    <!--    <div class="carta">
+			  <h4 class="carta-tipo">9</h4>
+			  <img class="carta-imagem" src="images/diamonds.png">
+			</div>
+	        <div class="carta">
+			  <h4 class="carta-tipo">9</h4>
+			  <img class="carta-imagem" src="images/diamonds.png">
+			</div> -->
+	</div>
+		
+        
 </div>
-
-
-
-
+   
+<script src="bootstrap-3.3.5/jquery-1.11.3.min.js"></script>
+<script src="bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="script.js"></script>
+
 </body>
 </html>
