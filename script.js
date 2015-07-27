@@ -61,13 +61,18 @@ function startBaralho(){
 
 botaoInicia.addEventListener('click', function (event) {
 
-	var playerName = document.getElementById("player-name");
-	startBaralho();
-    playerName.innerHTML = "<strong>Player: </strong>"+document.getElementById('getPlayer-name').value;        
-    saldoPlayerDIV.innerHTML = "<strong>Saldo:</strong> "+ saldoPlayer;
-    janelaInicial.style.visibility = "hidden";
-    fundo.style.visibility = "hidden";
-    
+	if(document.getElementById('getPlayer-name').value != ""){
+
+		var playerName = document.getElementById("player-name");
+		startBaralho();
+
+	    playerName.innerHTML = "<strong>Player: </strong>"+document.getElementById('getPlayer-name').value;        
+	    saldoPlayerDIV.innerHTML = "<strong>Balance:</strong> $"+ saldoPlayer;
+	    janelaInicial.style.visibility = "hidden";
+	    fundo.style.visibility = "hidden";
+    }else{
+    	alert("Insert a valid name!");
+    }
 
 });
 
@@ -79,7 +84,7 @@ apostaButton.addEventListener('click',function(event){
     	valorAposta = document.getElementById('valorAposta').value;
     	iniciaJogada(valorAposta);	
     }else{
-    	alert("Dinheiro insuficiente");
+    	alert("Not enought money");
     }
     
 
@@ -129,7 +134,7 @@ function puxaCarta(jogador){
 		
 		var preSoma = playerResult.innerHTML;
 		playerSoma = playerSoma + cartaTemp.valor;
-		playerResult.innerHTML = '<strong>Jogador:</strong>' +playerSoma;//preSoma + " + " + cartaTemp.valor +" = " + playerSoma;
+		playerResult.innerHTML = '<strong>Player:</strong>' +playerSoma;//preSoma + " + " + cartaTemp.valor +" = " + playerSoma;
 
 	}
 	else{
@@ -138,7 +143,7 @@ function puxaCarta(jogador){
 
 		var preSoma = compSoma.innerHTML;
 		compSoma = compSoma + cartaTemp.valor;
-		compResult.innerHTML = '<strong>Jogador:</strong>' + compSoma;
+		compResult.innerHTML = '<strong>Computer:</strong>' + compSoma;
 	}
 
 	return cartaTemp.tipo;
@@ -187,17 +192,17 @@ function setSaldo(valorAposta,estado){
 	
 	if(estado == "ganhou"){
 		saldoPlayer += valorAposta*2;
-		saldoPlayerDIV.innerHTML = "<strong>Saldo:</strong> "+ saldoPlayer;
-		resultText.innerHTML = "Você Ganhou";	
+		saldoPlayerDIV.innerHTML = "<strong>Balance:</strong> "+ saldoPlayer;
+		resultText.innerHTML = "You Won";	
 	}else if(estado == "blackjack"){
 		saldoPlayer += valorAposta*2;
-		saldoPlayerDIV.innerHTML = "<strong>Saldo:</strong> "+ saldoPlayer;
+		saldoPlayerDIV.innerHTML = "<strong>Balance:</strong> $"+ saldoPlayer;
 		resultText.innerHTML = "BLACKJACK";	
 	}
 	else{
 		saldoPlayer -= valorAposta;		
-		saldoPlayerDIV.innerHTML = "<strong>Saldo:</strong> "+ saldoPlayer;	
-		resultText.innerHTML = "Você Perdeu";
+		saldoPlayerDIV.innerHTML = "<strong>Balance:</strong> $"+ saldoPlayer;	
+		resultText.innerHTML = "You Lose";
 	}
 
 	   continueButton.addEventListener('click', function (event) {
@@ -208,11 +213,11 @@ function setSaldo(valorAposta,estado){
 	    	continuaAposta.style.display = 'none';
 		   	playerSoma = 0;
 		   	compSoma = 0;
-		   	playerResult.innerHTML = '<strong>Jogador:</strong>';
-		   	compResult.innerHTML = '<strong>Computador:</strong>';
+		   	playerResult.innerHTML = '<strong>Player:</strong>';
+		   	compResult.innerHTML = '<strong>Computer:</strong>';
 		   	statsDiv.style.display = "none";
-		   	cartasPlayer.innerHTML = '<h4>Jogador</h4>';
-		   	cartasComp.innerHTML = '<h4>Computador</h4>';
+		   	cartasPlayer.innerHTML = '<h4>Player</h4>';
+		   	cartasComp.innerHTML = '<h4>Computer</h4>';
 
     });
 	
