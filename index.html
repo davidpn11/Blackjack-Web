@@ -9,18 +9,18 @@
 </head>
 
 <body>
-<!-- ATIVAR QUANDO ESTIVER PRONTO
+
     <div id="fundo"></div>
     
     
 <div id="game-begin">
 <div class="form-group">
     
-    <input type="name" class="form-control" id="player-name" placeholder="Nome">
+    <input type="name" class="form-control" id="getPlayer-name" value="David" placeholder="Nome">
   </div>
-     <button id="botaoInicia" class="btn btn-default">Submit</button>
+     <button id="botaoInicia" class="btn btn-default">Começar</button>
 </div>
--->
+
 
 <div id="wrapper">
 	<div class="head">
@@ -28,9 +28,9 @@
 	</div>
 
 	<div class="log-jogo col-sm-3">
-		<h1>David</h1>
+		<h1 id="player-name"></h1>
         
-        <h3>Saldo</h3>
+        <h3 id="saldo-player"></h3>
        
         <div id="aposta" class="container">
             <div class="form-group">
@@ -52,7 +52,7 @@
         </div>
         <div id="stats">
 	        <h4 id="player-resultado"><strong>Jogador:</strong>10 + 8 = 18</h4>
-	        <h4 id="Cpomp-resultado"><strong>computador:</strong>10 + 8 = 18</h4>
+	        <h4 id="Cpomp-resultado"><strong>Computador:</strong>10 + 8 = 18</h4>
 	        
 	        <div id="final-result">
 		        <h2 id="result-text">Voce Ganhou!</h2>

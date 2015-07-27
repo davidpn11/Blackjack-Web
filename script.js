@@ -1,28 +1,24 @@
 
 
-var playerName;
+var playerName = document.getElementById("player-name");
+var saldoPlayer = document.getElementById("saldo-player");
 //var botaoInicia = document.querySelector('#iniciar-jogo');
 var janelaInicial = document.getElementById('game-begin');
 var fundo = document.getElementById('fundo');
 var fazerAposta = document.getElementById('fazerAposta');
 var aposta = document.getElementById('aposta');
 var continuaAposta = document.getElementById('continua-aposta');
-/*
+
 botaoInicia.addEventListener('click', function (event) {
 	
 	startBaralho();
-    playerName = document.getElementById('player-name').value;        
+    playerName.innerHTML = "<strong>"+document.getElementById('getPlayer-name').value+"</strong>";        
+    setSaldo(1000);
     janelaInicial.style.visibility = "hidden";
     fundo.style.visibility = "hidden";
     
-    var elements = document.getElementsByClassName('hidden-class');
-	for (var i in elements) {
-  		if (elements.hasOwnProperty(i)) {
-    		elements[i].className = 'show-class';
-  		}  	
-	}
 
-});*/
+});
 
 var valorAposta;
 
@@ -38,19 +34,15 @@ fazerAposta.addEventListener('click',function(event){
 
 var nipe = ['copa','paus','ouros','espadas'];
 var tipo = ['A','2','3','4','5','6','7','8','9','10','J','Q','K'];
+var baralho = [];
+var count=0;
+
 
 function carta(nipe, tipo, valor){
 	this.nipe = nipe;
 	this.tipo = tipo;
 	this.valor = valor;
 }
-
-
-var baralho = [];
-var count=0;
-
-
-
 
 function startBaralho(){
 	baralho = [];	
@@ -91,6 +83,10 @@ function setCarta(nipe,valor,posicao){
 	}else if(nipe == 'espadas'){
 		cartaImagem.src = "images/espadas.png";
 	}
+}
+
+function setSaldo(valueSaldo){
+	saldoPlayer.innerHTML = "<strong>Saldo:</strong> "+ valueSaldo;
 }
 
 setCarta('paus', 'K',0);
